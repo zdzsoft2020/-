@@ -40,7 +40,7 @@ public class TwoShift1000 {
         for (int i = 0; i <= quant; i++) { // 叠乘每个取值段
             long carry = 0; // 每个结果整数的进位
             int shift = i == quant ? remain : bits; // 移位
-            for (int j = 0; j < result.length; j++) {
+            for (int j = 0; shift > 0 && j < result.length; j++) {
                 long temp = (result[j] << shift) + carry; // 计算每个结果整数
                 result[j] = temp % limit; // 取余数
                 carry = (temp - result[j]) / limit; // 取进位
